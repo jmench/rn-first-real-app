@@ -11,8 +11,10 @@ import {
 
 import Card from '../components/Card';
 import NumberContainer from '../components/NumberContainer';
+import AwesomeButton from "react-native-really-awesome-button";
 import Colors from '../constants/colors';
 import Input from '../components/Input';
+import colors from '../constants/colors';
 
 const StartGameScreen = props => {
 
@@ -74,10 +76,34 @@ const StartGameScreen = props => {
           />
           <View style={styles.buttonContainer}>
             <View style={styles.button}>
-              <Button title='RESET' onPress={resetInputHandler} color={Colors.accent}/>
+              <AwesomeButton
+                primary
+                stretch
+                textColor={Colors.accent}
+                borderColor={Colors.accent}
+                backgroundDarker={Colors.primary}
+                backgroundShadow={Colors.accent}
+                borderWidth={1}
+                backgroundColor='white'
+                onPress={resetInputHandler}
+              >
+                RESET 
+              </AwesomeButton>
             </View>
             <View style={styles.button}>
-              <Button title='ENTER' onPress={confirmInputHandler} color={Colors.primary}/>
+              <AwesomeButton
+                primary
+                stretch
+                textColor={Colors.primary}
+                borderColor={Colors.primary}
+                backgroundDarker={Colors.accent}
+                backgroundShadow={Colors.primary}
+                borderWidth={1}
+                backgroundColor='white'
+                onPress={confirmInputHandler}
+              >
+                ENTER 
+              </AwesomeButton>
             </View>
           </View>
         </Card>
@@ -113,9 +139,10 @@ const styles = StyleSheet.create({
     paddingHorizontal:5,
     justifyContent:'space-between',
     alignItems:'center',
+    marginTop:5
   },
   button: {
-    width:'40%',
+    width:'45%',
   },
   confirmedOutputContainer: {
     marginTop:20,

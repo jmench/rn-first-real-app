@@ -1,8 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { View, Text, StyleSheet, Button, Alert } from 'react-native';
+import { View, Text, StyleSheet, Alert } from 'react-native';
 
 import NumberContainer from '../components/NumberContainer';
 import Card from '../components/Card';
+import AwesomeButton from "react-native-really-awesome-button";
+import Color from '../constants/colors';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 const generateRandomBetween = (min, max, exclude) => {
   min = Math.ceil(min);
@@ -54,12 +57,31 @@ const GameScreen = props => {
 
   return (
     <View style={styles.container}>
-      <Text>Opponent's Guess</Text>
+      <Card style={styles.guessContainer}>
+        <Text>The Opponent's Guess is...</Text>
         <NumberContainer>{currentGuess}</NumberContainer>
-        <Card style={styles.buttonContainer}>
-          <Button title='LOWER' onPress={nextGuessHandler.bind(this, 'lower')} />
-          <Button title='GREATER' onPress={nextGuessHandler.bind(this, 'greater')} />
-        </Card>
+        <Text>Is your number...</Text>
+        <View style={styles.buttonContainer}>
+          <View style={styles.button}>
+            <AwesomeButton
+              primary
+              stretch
+              onPress={nextGuessHandler.bind(this, 'lower')}
+            >
+              LOWER 
+            </AwesomeButton>
+          </View>
+          <View style={styles.button}>
+            <AwesomeButton
+              primary
+              stretch
+              onPress={nextGuessHandler.bind(this, 'greater')}
+            >
+              GREATER 
+            </AwesomeButton>
+          </View>
+        </View>
+      </Card>
     </View>
   );
 };
@@ -70,12 +92,19 @@ const styles = StyleSheet.create({
     padding:10,
     alignItems:'center',
   },
+  guessContainer: {
+    alignItems:'center',
+    justifyContent:'center',
+  },
   buttonContainer: {
     flexDirection:'row',
     justifyContent:'space-evenly',
-    marginTop:20,
+    marginTop:10,
     width:300,
     maxWidth:'80%',
+  },
+  button: {
+    width:'45%',
   },
 });
 
